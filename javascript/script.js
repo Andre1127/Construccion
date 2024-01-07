@@ -1,7 +1,7 @@
 function handleCredentialResponse(response) {
     if (response.credential) {
       var credential = response.credential;
-  
+      var profile = response.profileObj;
       // Maneja la información de la credencial como desees
       console.log("ID de usuario:", credential.id);
       console.log("Nombre:", credential.name);
