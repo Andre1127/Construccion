@@ -6,6 +6,7 @@ function handleCredentialResponse(response) {
       console.log("ID de usuario:", credential.id);
       console.log("Nombre:", credential.name);
       console.log("Email:", credential.email);
+      console.log(response);
     }
   }
   
