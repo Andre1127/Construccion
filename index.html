@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INICIO DE SESION CON API DE GOOGLE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!--Scripts de google-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <meta name="google-signin-client_id" content="968114407319-ra479qdn3rgnnsr07n34rjjqhbvv26c7.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <script src="javascript/script.js"></script>
+
+</head>
+<body>
+    <div class="formulario">
+        <h1>Inicio de Sesion</h1>
+        <form method="post">
+            <div class="username_password">
+                <input type="email" name="username" required>
+                <label>Nombre de Usuario</label>            
+            </div>
+            <div class="username_password">
+                <input type="password" name="password" required>
+                <label>Contraseña</label>
+            </div>
+            <div class="recordar">
+                <input type="checkbox" id="recordarme" name="recordarme">
+                <label for="recordarme">Recordarme</label>
+            </div>            
+            <div class="olvidar">
+               <a href="#">¿Olvido su contraseña?</a>
+            </div>
+            <button class="iniciar_sesion">Iniciar Sesion</button>
+            <div class="registro">
+                No tienes una cuenta <a href="#">Registrate</a>
+            </div>
+            <div class="signOut">
+                <a href="#" onclick="signOut();">Sign out</a>
+            </div>
+            
+            <!--Scripts de Google Sign In-->
+            <div id="g_id_onload"
+                data-client_id="968114407319-ra479qdn3rgnnsr07n34rjjqhbvv26c7.apps.googleusercontent.com"
+                data-context="use"
+                data-ux_mode="popup"
+                data-callback="handleCredentialResponse"
+                data-nonce=""
+                data-itp_support="true">
+            </div>
+
+            <div class="g_id_signin"
+                data-type="standard"
+                data-shape="rectangular"
+                data-theme="outline"
+                data-text="signin_with"
+                data-size="large"
+                data-locale="en"
+                data-logo_alignment="left"
+                data-width="300">
+            </div>
+            <script>
+                function onSignIn(googleUser) {
+                    var profile = googleUser.getBasicProfile();
+                    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                    console.log('Name: ' + profile.getName());
+                    console.log('Image URL: ' + profile.getImageUrl());
+                    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                    var id_token = googleUser.getAuthResponse().id_token;
+                    console.log(id_token);
+                }
+                function signOut() {
+                    var auth2 = gapi.auth2.getAuthInstance();
+                    auth2.signOut().then(function () {
+                    console.log('User signed out.');
+                    });
+                }
+
+            </script>
+        </form>
+    </div>
+</body>
+</html>
+
