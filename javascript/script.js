@@ -15,6 +15,11 @@ function handleCredentialResponse(response) {
     callback: handleCredentialResponse,
     cancel_on_tap_outside: false,
   });
+ function handleSignOut() {
+                    // Cerrar sesión usando GSI
+                    google.accounts.id.disableAutoSelect();
+                    google.accounts.id.prompt();
+                }
   
   // Renderiza el botón de Inicio de Sesión de Google
   google.accounts.id.renderButton(document.querySelector('.g_id_signin'));
