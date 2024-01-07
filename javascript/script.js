@@ -24,6 +24,8 @@ function handleSignOut() {
                     google.accounts.id.prompt();
                 }
   
-  // Renderiza el botón de Inicio de Sesión de Google
-  google.accounts.id.renderButton(document.querySelector('.g_id_signin'));
+if (typeof google !== 'undefined') {
+                    // Renderiza el botón de inicio de sesión
+                    google.accounts.id.renderButton(document.querySelector('.g_id_signin'));
+                }
   
