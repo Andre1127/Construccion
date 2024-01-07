@@ -1,5 +1,6 @@
 if (typeof google !== 'undefined') {
                     // Inicializa la biblioteca de Google Sign-In
+                   // Inicializa Google Identity Services y configura la función de devolución de llamada
                     google.accounts.id.initialize({
                         client_id: '968114407319-ra479qdn3rgnnsr07n34rjjqhbvv26c7.apps.googleusercontent.com',
                         callback: handleCredentialResponse,
@@ -17,14 +18,7 @@ function handleCredentialResponse(response) {
       console.log(response);
     }
   }
-  
-  // Inicializa Google Identity Services y configura la función de devolución de llamada
-  google.accounts.id.initialize({
-    client_id: '968114407319-ra479qdn3rgnnsr07n34rjjqhbvv26c7.apps.googleusercontent.com',
-    callback: handleCredentialResponse,
-    cancel_on_tap_outside: false,
-  });
- function handleSignOut() {
+function handleSignOut() {
                     // Cerrar sesión usando GSI
                     google.accounts.id.disableAutoSelect();
                     google.accounts.id.prompt();
