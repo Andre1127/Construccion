@@ -16,6 +16,7 @@ function handleCredentialResponse(response) {
       console.log("Nombre:", credential.name);
       console.log("Email:", credential.email);
       console.log(response);
+      window.location.href = 'https://www.youtube.com/watch?v=ld4nzao5XAc'
     }
   }
 function handleSignOut() {
